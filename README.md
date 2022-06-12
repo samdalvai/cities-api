@@ -12,7 +12,7 @@ province: "LO",
 altitude: 64
 ```
 ## API demo
-A working demo of the API is available at the following address: (https://citiesapi.azurewebsites.net/cities/), see the API [endpoints](#api-endpoints) for a guide on how to use this API. Please keep in mind that the application is deployed on Microsoft Azure as a free demonstration, thus it will not always be available online.
+A working demo of the API is available at the following address: https://citiesapi.azurewebsites.net/cities/, see the API [endpoints](#api-endpoints) for a guide on how to use this API. Please keep in mind that the application is deployed on Microsoft Azure as a free demonstration, thus it will not always be available online.
 
 
 ## Run with npm
