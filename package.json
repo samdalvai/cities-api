@@ -4,7 +4,7 @@
   "description": "An api for gathering data on Italian cities",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/server.ts",
+    "start": "nodemon src/server.ts",
     "build": "rm -rf build/ && prettier --write src/ && tsc"
   },
   "repository": {
