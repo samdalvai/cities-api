@@ -27,7 +27,7 @@ altitude: 64
 
 ## API endpoints
 
-The following are the current available endpoints of the API:
+The following are the current available endpoints of the API, which at the moment accepts only `GET` requests:
 
 * `/cities/name/{name}`: retrieve cities by name
 * `/cities/nameincluded/{name}`: retrieve cities by name included (similar as above, but returns also partial results)
