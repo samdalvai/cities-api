@@ -17,6 +17,11 @@ export const retrieveCitiesByName = (name: string): City[] => {
     return cities.filter(city => city.name.toLowerCase() === name.toLowerCase())
 }
 
+// Same as above, but returns also partial results
+export const retrieveCitiesByNameIncluded = (name: string): City[] => {
+    return cities.filter(city => city.name.toLowerCase().includes(name.toLowerCase()))
+}
+
 export const retrieveCitiesByProvince = (province: string): City[] => {
     return cities.filter(city => city.province.toLowerCase() === province.toLowerCase())
 }

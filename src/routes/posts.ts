@@ -4,8 +4,11 @@ import controller from '../controllers/posts';
 const router = express.Router();
 
 router.get('/cities/name=:name', controller.getCitiesByName);
+router.get('/cities/nameincluded=:name', controller.getCitiesByNameIncluded);
+
 router.get('/cities/province=:province', controller.getCitiesByProvince);
 router.get('/cities/cap=:cap', controller.getCitiesByCap);
+router.get('/cities/altitude=:altitude', controller.getCitiesByCap);
 
 /*router.get('/posts', controller.getPosts);
 router.get('/posts/:id', controller.getPost);
