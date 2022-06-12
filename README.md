@@ -5,7 +5,7 @@ An api for gathering data on Italian cities. The API offers a micro service for 
 
 Here is an example of the data that is currently provided by the api.
 
-```Json
+```
 name: "Abbadia Cerreto",
 zip: "26834",
 province: "LO",
@@ -35,6 +35,8 @@ The following are the current available endpoints of the API, which at the momen
 * `/cities/zip/{zip}`: retrieve cities by zip code
 * `/cities/altitude/{comparison}{altitude}`: retrieve cities by altitude, the comparison symbol can be =, < or >.
 
+## Future functionalities
+The cities API is still a work in progress, more functionalities will be added in the future...
 # Author
 Samuel Dalvai
 
