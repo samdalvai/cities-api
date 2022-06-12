@@ -62,19 +62,22 @@ const getCitiesByCap = async (req: Request, res: Response, next: NextFunction) =
 }
 
 const getCitiesByAltitude = async (req: Request, res: Response, next: NextFunction) => {
-    console.log("Hello")
-
     const params = req.params.altitude;
+
+    if (!params.match(/^[<=>]{1}[0-9]+/))
+        return res.status(400).json({
+            message: "Wrong format for altitude, examples of supported formats: =100, <100, >100 "
+        });
 
     // If values of altitude and comparison are not found, 
     // set them to default values 0 and =
     const altitudeStr = params.match(/[0-9]+/)?.toString()
     const altitude = altitudeStr ? parseInt(altitudeStr) : 0
 
-    const comparisonStr = params.match(/[<=>]+/)?.toString()
+    const comparisonStr = params.match(/^[<=>]{1}/)?.toString()
     const comparison: Comparison = comparisonStr ? symbolToComparisonType(comparisonStr) : Comparison.equal
 
-    console.log('Getting cities by altitude ' + altitude)
+    console.log('Getting cities by altitude ' + comparisonStr + ' ' + altitudeStr)
 
     const cities = retrieveCitiesByAltitude(altitude, comparison)
 

@@ -50,12 +50,10 @@ export const compareByComparisonType = (a: number, b: number, comparison: Compar
             return a === b;
         case Comparison.lower :
             return a < b;
-        case Comparison.lowerequal:
-            return a <= b;
         case Comparison.greater :
             return a > b;
-        case Comparison.greaterequal:
-            return a >= b;
+        default:
+            throw new Error("Undefined comparison type");
     }   
 }
 
@@ -65,13 +63,9 @@ export const symbolToComparisonType = (comparisonSymbol: string): Comparison => 
             return Comparison.equal;
         case '<' :
             return Comparison.lower;
-        case '<=':
-            return Comparison.lowerequal;
         case '>' :
             return Comparison.greater;
-        case '>=':
-            return Comparison.greaterequal;
         default:
-            throw new Error("Undefined comparison symbol");
+            throw new Error("Undefined comparison symbol: " + comparisonSymbol);
     }   
 }
