@@ -3,6 +3,8 @@ import controller from '../controllers/posts';
 
 const router = express.Router();
 
+router.get('/cities/name=:name', controller.getCitiesByName);
+router.get('/cities/province=:province', controller.getCitiesByName);
 router.get('/posts', controller.getPosts);
 router.get('/posts/:id', controller.getPost);
 router.put('/posts/:id', controller.updatePost);

@@ -1,12 +1,24 @@
 import { Request, Response, NextFunction } from 'express';
 import axios, { AxiosResponse } from 'axios';
-import { printCity } from '../service/retrieval'
+import { printCity, retrieveCitiesByName } from '../service/retrieval'
 
 interface Post {
     userId: Number;
     id: Number;
     title: String;
     body: String;
+}
+
+const getCitiesByName = async (req: Request, res: Response, next: NextFunction) => {
+    const name = req.params.name;
+
+    console.log('Getting cities by name: ' + name)
+
+    const cities = retrieveCitiesByName(name)
+
+    return res.status(200).json({
+        cities: cities
+    });
 }
 
 // getting all posts
@@ -25,7 +37,7 @@ const getPost = async (req: Request, res: Response, next: NextFunction) => {
     console.log("Getting specific post...")
     console.log("testing print of city")
 
-    printCity()
+    printCity(0)
 
     // get the post id from the req
     let id: string = req.params.id;
@@ -83,4 +95,4 @@ const addPost = async (req: Request, res: Response, next: NextFunction) => {
     });
 };
 
-export default { getPosts, getPost, updatePost, deletePost, addPost };
+export default { getPosts, getPost, updatePost, deletePost, addPost, getCitiesByName };
