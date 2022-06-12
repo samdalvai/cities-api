@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import axios, { AxiosResponse } from 'axios';
-import { printCity, retrieveCitiesByName } from '../service/retrieval'
+import { printCity, retrieveCitiesByCap, retrieveCitiesByName, retrieveCitiesByProvince } from '../service/retrieval'
 
 interface Post {
     userId: Number;
@@ -21,9 +21,32 @@ const getCitiesByName = async (req: Request, res: Response, next: NextFunction) 
     });
 }
 
+const getCitiesByProvince = async (req: Request, res: Response, next: NextFunction) => {
+    const province = req.params.province;
+
+    console.log('Getting cities by province: ' + province)
+
+    const cities = retrieveCitiesByProvince(province)
+
+    return res.status(200).json({
+        cities: cities
+    });
+}
+
+const getCitiesByCap = async (req: Request, res: Response, next: NextFunction) => {
+    const cap = req.params.cap;
+
+    console.log('Getting cities by cap: ' + cap)
+
+    const cities = retrieveCitiesByCap(cap)
+
+    return res.status(200).json({
+        cities: cities
+    });
+}
+
 // getting all posts
 const getPosts = async (req: Request, res: Response, next: NextFunction) => {
-    console.log("Getting posts...")
     // get some posts
     let result: AxiosResponse = await axios.get(`https://jsonplaceholder.typicode.com/posts`);
     let posts: [Post] = result.data;
@@ -34,11 +57,6 @@ const getPosts = async (req: Request, res: Response, next: NextFunction) => {
 
 // getting a single post
 const getPost = async (req: Request, res: Response, next: NextFunction) => {
-    console.log("Getting specific post...")
-    console.log("testing print of city")
-
-    printCity(0)
-
     // get the post id from the req
     let id: string = req.params.id;
     // get the post
@@ -95,4 +113,4 @@ const addPost = async (req: Request, res: Response, next: NextFunction) => {
     });
 };
 
-export default { getPosts, getPost, updatePost, deletePost, addPost, getCitiesByName };
+export default { getPosts, getPost, updatePost, deletePost, addPost, getCitiesByName, getCitiesByProvince, getCitiesByCap };

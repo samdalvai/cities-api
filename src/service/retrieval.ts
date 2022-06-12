@@ -16,3 +16,11 @@ export const printCity = (index: number): void => {
 export const retrieveCitiesByName = (name: string): City[] => {
     return cities.filter(city => city.name.toLowerCase() === name.toLowerCase())
 }
+
+export const retrieveCitiesByProvince = (province: string): City[] => {
+    return cities.filter(city => city.province.toLowerCase() === province.toLowerCase())
+}
+
+export const retrieveCitiesByCap = (cap: string): City[] => {
+    return cities.filter(city => city.cap === cap)
+}
