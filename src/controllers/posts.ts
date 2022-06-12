@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import axios, { AxiosResponse } from 'axios';
-import { retrieveCitiesByCap, retrieveCitiesByName, retrieveCitiesByNameIncluded, retrieveCitiesByProvince } from '../service/retrieval'
+import { retrieveCitiesByAltitude, retrieveCitiesByCap, retrieveCitiesByName, retrieveCitiesByNameIncluded, retrieveCitiesByProvince } from '../service/retrieval'
 
 interface Post {
     userId: Number;
@@ -57,72 +57,18 @@ const getCitiesByCap = async (req: Request, res: Response, next: NextFunction) =
     });
 }
 
-// getting all posts
-const getPosts = async (req: Request, res: Response, next: NextFunction) => {
-    // get some posts
-    let result: AxiosResponse = await axios.get(`https://jsonplaceholder.typicode.com/posts`);
-    let posts: [Post] = result.data;
-    return res.status(200).json({
-        message: posts
-    });
-};
+const getCitiesByAltitude = async (req: Request, res: Response, next: NextFunction) => {
+    const altitude = req.params.altitude;
+    const comparison = req.params.comparison;
 
-// getting a single post
-const getPost = async (req: Request, res: Response, next: NextFunction) => {
-    // get the post id from the req
-    let id: string = req.params.id;
-    // get the post
-    let result: AxiosResponse = await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`);
-    let post: Post = result.data;
-    return res.status(200).json({
-        message: post
-    });
-};
+    console.log('Getting cities by altitude ' + comparison + " " + altitude)
 
-// updating a post
-const updatePost = async (req: Request, res: Response, next: NextFunction) => {
-    // get the post id from the req.params
-    let id: string = req.params.id;
-    // get the data from req.body
-    let title: string = req.body.title ?? null;
-    let body: string = req.body.body ?? null;
-    // update the post
-    let response: AxiosResponse = await axios.put(`https://jsonplaceholder.typicode.com/posts/${id}`, {
-        ...(title && { title }),
-        ...(body && { body })
-    });
-    // return response
-    return res.status(200).json({
-        message: response.data
-    });
-};
+    const cities = retrieveCitiesByAltitude(altitude,comparison)
 
-// deleting a post
-const deletePost = async (req: Request, res: Response, next: NextFunction) => {
-    // get the post id from req.params
-    let id: string = req.params.id;
-    // delete the post
-    let response: AxiosResponse = await axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`);
-    // return response
     return res.status(200).json({
-        message: 'post deleted successfully'
+        cities: cities
     });
-};
+}
 
-// adding a post
-const addPost = async (req: Request, res: Response, next: NextFunction) => {
-    // get the data from req.body
-    let title: string = req.body.title;
-    let body: string = req.body.body;
-    // add the post
-    let response: AxiosResponse = await axios.post(`https://jsonplaceholder.typicode.com/posts`, {
-        title,
-        body
-    });
-    // return response
-    return res.status(200).json({
-        message: response.data
-    });
-};
 
-export default { getPosts, getPost, updatePost, deletePost, addPost, getCitiesByName, getCitiesByNameIncluded, getCitiesByProvince, getCitiesByCap };
+export default { getCitiesByName, getCitiesByNameIncluded, getCitiesByProvince, getCitiesByCap, getCitiesByAltitude };
