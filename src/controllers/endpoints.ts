@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import axios, { AxiosResponse } from 'axios';
-import { retrieveCitiesByAltitude, retrieveCitiesByCap, retrieveCitiesByName, retrieveCitiesByNameIncluded, retrieveCitiesByProvince } from '../service/retrieval'
+import { Comparison, retrieveCitiesByAltitude, retrieveCitiesByCap, retrieveCitiesByName, retrieveCitiesByNameIncluded, retrieveCitiesByProvince, symbolToComparisonType } from '../service/retrieval'
 
 const getCitiesByName = async (req: Request, res: Response, next: NextFunction) => {
     const name = req.params.name;
@@ -51,18 +51,21 @@ const getCitiesByCap = async (req: Request, res: Response, next: NextFunction) =
 }
 
 const getCitiesByAltitude = async (req: Request, res: Response, next: NextFunction) => {
-    const altitude = req.params.altitude;
-    let comparison = req.params.comparison;
+    console.log("Hello")
 
-    if (!["equal","lower","greater"].includes(comparison.toLowerCase())){
-        console.log("Unsupported comparison type: " + comparison + ". Setting comparison type to equal by default...")
-        comparison = "equal"
-    }
+    const params = req.params.altitude;
 
+    // If values of altitude and comparison are not found, 
+    // set them to default values 0 and =
+    const altitudeStr = params.match(/[0-9]+/)?.toString()
+    const altitude = altitudeStr ? parseInt(altitudeStr) : 0
 
-    console.log('Getting cities by altitude ' + comparison.toLowerCase() + " " + altitude)
+    const comparisonStr = params.match(/[<=>]+/)?.toString()
+    const comparison: Comparison = comparisonStr ? symbolToComparisonType(comparisonStr) : Comparison.equal
 
-    const cities = retrieveCitiesByAltitude(altitude,comparison.toLowerCase())
+    console.log('Getting cities by altitude ' + altitude)
+
+    const cities = retrieveCitiesByAltitude(altitude, comparison)
 
     return res.status(200).json({
         cities: cities

@@ -10,7 +10,9 @@ export  interface City {
 export enum Comparison {
     equal,
     lower,
-    greater
+    lowerequal,
+    greater,
+    greaterequal
 }
 
 export const printCity = (index: number): void => {
@@ -36,25 +38,40 @@ export const retrieveCitiesByCap = (cap: string): City[] => {
     return cities.filter(city => city.cap === cap)
 }
 
-export const retrieveCitiesByAltitude = (altitude: string, comparison: string): City[] => {
-    const altitudeNum = parseInt(altitude);
-    const comparisonCom = stringToComparison(comparison);
+export const retrieveCitiesByAltitude = (altitude: number, comparison: Comparison): City[] => {
+    
 
-    return cities.filter(city => 
-        comparisonCom === Comparison.equal ? city.altitude === altitudeNum :
-        comparisonCom === Comparison.lower ? city.altitude <= altitudeNum :
-        city.altitude >= altitudeNum);
+    return cities.filter(city => compareByComparisonType(city.altitude, altitude, comparison))
 }
 
-export const stringToComparison = (comparison: string): Comparison => {
+export const compareByComparisonType = (a: number, b: number, comparison: Comparison): Boolean => {
     switch(comparison){
-        case "equal" :
-            return Comparison.equal
-        case "lower" :
-            return Comparison.lower
-        case "greater" :
-            return Comparison.greater
-    }
+        case Comparison.equal :
+            return a === b;
+        case Comparison.lower :
+            return a < b;
+        case Comparison.lowerequal:
+            return a <= b;
+        case Comparison.greater :
+            return a > b;
+        case Comparison.greaterequal:
+            return a >= b;
+    }   
+}
 
-    throw new Error("Unsupported comparison type: " + comparison)
+export const symbolToComparisonType = (comparisonSymbol: string): Comparison => {
+    switch(comparisonSymbol){
+        case  '=':
+            return Comparison.equal;
+        case '<' :
+            return Comparison.lower;
+        case '<=':
+            return Comparison.lowerequal;
+        case '>' :
+            return Comparison.greater;
+        case '>=':
+            return Comparison.greaterequal;
+        default:
+            throw new Error("Undefined comparison symbol");
+    }   
 }
