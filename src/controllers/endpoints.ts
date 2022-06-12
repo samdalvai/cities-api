@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import axios, { AxiosResponse } from 'axios';
-import { Comparison, retrieveCitiesByAltitude, retrieveCitiesByCap, retrieveCitiesByName, retrieveCitiesByNameIncluded, retrieveCitiesByProvince, symbolToComparisonType } from '../service/retrieval'
+import { Comparison, retrieveCitiesByAltitude, retrieveCitiesByZipCode, retrieveCitiesByName, retrieveCitiesByNameIncluded, retrieveCitiesByProvince, symbolToComparisonType } from '../service/cities-retrieval'
 
 const getCitiesByName = async (req: Request, res: Response, next: NextFunction) => {
     const name = req.params.name;
@@ -45,16 +45,16 @@ const getCitiesByProvince = async (req: Request, res: Response, next: NextFuncti
 }
 
 const getCitiesByCap = async (req: Request, res: Response, next: NextFunction) => {
-    const cap = req.params.cap;
+    const zip = req.params.zip;
 
-    if (!cap.match(/[0-9]{5}/) || cap.length > 5)
+    if (!zip.match(/[0-9]{5}/) || zip.length > 5)
         return res.status(400).json({
-            message: "Wrong format for cap, the right format is [0-9]{5}, e.g. 39100"
+            message: "Wrong format for zip code, the right format is [0-9]{5}, e.g. 39100"
         });
 
-    console.log('Getting cities by cap: ' + cap)
+    console.log('Getting cities by cap: ' + zip)
 
-    const cities = retrieveCitiesByCap(cap)
+    const cities = retrieveCitiesByZipCode(zip)
 
     return res.status(200).json({
         cities: cities

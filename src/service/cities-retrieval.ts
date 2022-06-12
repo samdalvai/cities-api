@@ -2,7 +2,7 @@ import { cities } from '../data/cities'
 
 export  interface City {
     name: string,
-    cap: string,
+    zip: string,
     province: string,
     altitude: number
 }
@@ -34,8 +34,8 @@ export const retrieveCitiesByProvince = (province: string): City[] => {
     return cities.filter(city => city.province.toLowerCase() === province.toLowerCase())
 }
 
-export const retrieveCitiesByCap = (cap: string): City[] => {
-    return cities.filter(city => city.cap === cap)
+export const retrieveCitiesByZipCode = (zip: string): City[] => {
+    return cities.filter(city => city.zip === zip)
 }
 
 export const retrieveCitiesByAltitude = (altitude: number, comparison: Comparison): City[] => {
