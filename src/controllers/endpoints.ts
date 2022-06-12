@@ -29,6 +29,12 @@ const getCitiesByNameIncluded = async (req: Request, res: Response, next: NextFu
 const getCitiesByProvince = async (req: Request, res: Response, next: NextFunction) => {
     const province = req.params.province;
 
+    if (!province.match(/[a-zA-Z]{2}/) || province.length > 2)
+        return res.status(400).json({
+            message: "Wrong format for province, the right format is [a-zA-Z]{2}, e.g. BZ"
+        });
+
+
     console.log('Getting cities by province: ' + province)
 
     const cities = retrieveCitiesByProvince(province)
@@ -40,6 +46,11 @@ const getCitiesByProvince = async (req: Request, res: Response, next: NextFuncti
 
 const getCitiesByCap = async (req: Request, res: Response, next: NextFunction) => {
     const cap = req.params.cap;
+
+    if (!cap.match(/[0-9]{5}/) || cap.length > 5)
+        return res.status(400).json({
+            message: "Wrong format for cap, the right format is [0-9]{5}, e.g. 39100"
+        });
 
     console.log('Getting cities by cap: ' + cap)
 
