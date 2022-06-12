@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import axios, { AxiosResponse } from 'axios';
+import { printCity } from '../service/retrieval'
 
 interface Post {
     userId: Number;
@@ -10,6 +11,7 @@ interface Post {
 
 // getting all posts
 const getPosts = async (req: Request, res: Response, next: NextFunction) => {
+    console.log("Getting posts...")
     // get some posts
     let result: AxiosResponse = await axios.get(`https://jsonplaceholder.typicode.com/posts`);
     let posts: [Post] = result.data;
@@ -20,6 +22,11 @@ const getPosts = async (req: Request, res: Response, next: NextFunction) => {
 
 // getting a single post
 const getPost = async (req: Request, res: Response, next: NextFunction) => {
+    console.log("Getting specific post...")
+    console.log("testing print of city")
+
+    printCity()
+
     // get the post id from the req
     let id: string = req.params.id;
     // get the post
