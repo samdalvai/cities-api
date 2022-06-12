@@ -27,6 +27,8 @@ altitude: 64
 
 ## API endpoints
 
+The following are the current available endpoints of the API:
+
 * `/cities/name/{name}`: retrieve cities by name
 * `/cities/nameincluded/{name}`: retrieve cities by name included (similar as above, but returns also partial results)
 * `/cities/province/{province}`: retrieve cities by province
