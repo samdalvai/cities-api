@@ -1,4 +1,4 @@
-	export const cities = [
+export const cities = [
 	{
 		name: "Abano Terme",
 		zip: "35031",
@@ -6819,7 +6819,7 @@
 		name: "Campiglia Cervo",
 		zip: "13812",
 		province: "BI",
-		altitude: 775
+		altitude: 77568
 	},
 	{
 		name: "Campiglia Marittima",
@@ -9819,7 +9819,7 @@
 		name: "Castellamonte",
 		zip: "10081",
 		province: "TO",
-		altitude: 343
+		altitude: 34317
 	},
 	{
 		name: "Castellana Grotte",
@@ -11565,7 +11565,7 @@
 		name: "Cerreto Sannita",
 		zip: "82032",
 		province: "BN",
-		altitude: 277
+		altitude: 2774
 	},
 	{
 		name: "Cerreto d'Asti",
@@ -11739,7 +11739,7 @@
 		name: "Cervinara",
 		zip: "83012",
 		province: "AV",
-		altitude: 284
+		altitude: 28490
 	},
 	{
 		name: "Cervino",
@@ -11889,7 +11889,7 @@
 		name: "Ceva",
 		zip: "12073",
 		province: "CN",
-		altitude: 386
+		altitude: 38665
 	},
 	{
 		name: "Cevo",
@@ -24021,7 +24021,7 @@
 		name: "Moena",
 		zip: "38035",
 		province: "TN",
-		altitude: 1
+		altitude: 1184
 	},
 	{
 		name: "Moggio",
@@ -28089,7 +28089,7 @@
 		name: "Ortisei",
 		zip: "39046",
 		province: "BZ",
-		altitude: 1
+		altitude: 1220
 	},
 	{
 		name: "Ortona",
@@ -35247,7 +35247,7 @@
 		name: "Salbertrand",
 		zip: "10050",
 		province: "TO",
-		altitude: 1
+		altitude: 1032
 	},
 	{
 		name: "Salcedo",
@@ -37281,7 +37281,7 @@
 		name: "San Salvatore Telesino",
 		zip: "82030",
 		province: "BN",
-		altitude: 95
+		altitude: 955
 	},
 	{
 		name: "San Salvatore di Fitalia",
@@ -38871,7 +38871,7 @@
 		name: "Sauze di Cesana",
 		zip: "10054",
 		province: "TO",
-		altitude: 1
+		altitude: 1560
 	},
 	{
 		name: "Sava",
@@ -44955,7 +44955,7 @@
 		name: "Venezia",
 		zip: "30121",
 		province: "VE",
-		altitude: 2
+		altitude: 256
 	},
 	{
 		name: "Veniano",
