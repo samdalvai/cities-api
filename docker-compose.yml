@@ -2,25 +2,13 @@ version: '3'
 
 services:
   app:
-    image: samdalvai/cities-api-app:1.0
-    build: ./app
+    image: samdalvai/cities-api:1.0
+    build:
+      context: .
+      dockerfile: Dockerfile
     volumes:
-      - ./app:/usr/src/app
-      #- /usr/src/app/node_modules # Remove this if you have pure JS dependencies
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules # Remove this if you have pure JS dependencies
     ports:
       - "3000:3000"
     restart: always
-  mysql:
-    image: samdalvai/cities-api-db:1.0
-    build: ./db
-    volumes:
-      - mysql-data:/var/lib/mysql
-    restart: always
-    ports:
-      - "3306:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: admin
-      MYSQL_DATABASE: citiesAPI_DB
-
-volumes:
-  mysql-data:
