@@ -1,8 +1,13 @@
 import { Request, Response, NextFunction } from 'express';
 import axios, { AxiosResponse } from 'axios';
 import { Comparison, retrieveCitiesByAltitude, retrieveCitiesByZipCode, retrieveCitiesByName, retrieveCitiesByNameIncluded, retrieveCitiesByProvince, symbolToComparisonType } from '../service/cities-retrieval'
+import { db } from '../db/connection';
+
 
 const getCitiesByName = async (req: Request, res: Response, next: NextFunction) => {
+
+    console.log(db.query('SELECT COUNT(*) FROM city'))
+
     const name = req.params.name;
 
     console.log('Getting cities by name: ' + name)
