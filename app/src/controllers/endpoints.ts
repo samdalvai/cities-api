@@ -6,7 +6,8 @@ import { db } from '../db/connection';
 
 const getCitiesByName = async (req: Request, res: Response, next: NextFunction) => {
 
-    console.log(db.query('SELECT COUNT(*) FROM city'))
+    // test
+    //console.log(db.query('SELECT COUNT(*) FROM city'))
 
     const name = req.params.name;
 
