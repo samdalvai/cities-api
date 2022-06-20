@@ -2,7 +2,7 @@ version: '3'
 
 services:
   app:
-    image: samdalvai/cities-api:1.0
+    image: samdalvai/cities-api-app:1.0
     build: ./app
     volumes:
       - ./app:/usr/src/app
@@ -11,6 +11,7 @@ services:
       - "3000:3000"
     restart: always
   mysql:
+    image: samdalvai/cities-api-db:1.0
     build: ./db
     volumes:
       - mysql-data:/var/lib/mysql
