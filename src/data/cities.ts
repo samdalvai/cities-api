@@ -34392,6 +34392,12 @@ export const cities = [
 		altitude: 21
 	},
 	{
+		name: "Roma",
+		zip: "00100",
+		province: "RM",
+		altitude: 21
+	},
+	{
 		name: "Romagnano Sesia",
 		zip: "28078",
 		province: "NO",
