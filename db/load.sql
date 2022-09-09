@@ -32,7 +32,7 @@ BEGIN;
 INSERT INTO province VALUES
 
 ('SS','Sassari','III',0.6),
-('BZ','Bolzano/Bozen','I-A',-1),
+('BZ','Bolzano/Bozen','I-A',1.5),
 ('FG','Foggia','II',1),
 ('CN','Cuneo','I-A',1.5),
 ('TO','Torino','I-A',1.5),
