@@ -16,6 +16,7 @@ A working demo of the API is available at the following address: https://citiesa
 
 
 ## Run with npm
+* cd into the `app/` folder
 * `npm init` to install packages and dependencies
 * `npm start` to run the development server
 
@@ -24,7 +25,7 @@ A working demo of the API is available at the following address: https://citiesa
 
 ## How to query the api
 
-* Visit `http://localhost:3000/...` in your browser when on local development
+* Visit http://localhost:3000/cities/ in your browser when on local development
 * As an alternative you can use a tool like `Postman` to send `GET` requests to the API.
 
 
