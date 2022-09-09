@@ -11,7 +11,7 @@ export const provinces = [
 		shorthand: "BZ",
 		region: "Trentino-Alto Adige/Südtirol",
 		zone: "I",
-		baseload: -1
+		baseload: 1.5
 	},
 	{
 		name: "Foggia",
