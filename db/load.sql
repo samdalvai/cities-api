@@ -1124,7 +1124,7 @@ INSERT INTO city VALUES
 ('20875','Burago di Molgora','MB',182),
 ('09040','Burcei','CA',648),
 ('92010','Burgio','AG',317),
-('07010','Burgos','SS',856),
+('07010','Burgos','SS',575),
 ('10060','Buriasco','TO',301),
 ('10010','Burolo','TO',276),
 ('13040','Buronzo','VC',189),
